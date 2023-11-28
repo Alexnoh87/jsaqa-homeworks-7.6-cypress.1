@@ -1,0 +1,19 @@
+{
+  "name": "jsaqa-homeworks-7.6-cypress.1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "laptop:headed": "cypress run --config-file cypress.config.js --headed --browser edge",
+    "laptop:headless": "cypress run --config-file cypress.config.js --headless --browser edge",
+    "mobile:headed": "cypress run --config-file cypress2.config.js --headed --browser edge",
+    "mobile:headless": "cypress run --config-file cypress2.config.js --headless --browser edge"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.0"
+  }
+}
