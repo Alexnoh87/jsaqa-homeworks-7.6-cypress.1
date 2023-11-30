@@ -1,12 +1,13 @@
-const {email, password, titleBook1, titleBook2, description, author} = require ("../fixtures/example.json");
+const {email, password} = require ("../fixtures/login.json");
 
-describe('template spec', () => {
+describe('login tests', () => {
 
   beforeEach (() => {
     cy.visit('/')
   })
 
   it('test page display', () => {
+    cy.visit('/')
     cy.contains('Books list').should('be.visible')
   })
 
@@ -28,36 +29,5 @@ describe('template spec', () => {
     cy.get('#pass').then ((elements) => {
       expect(elements[0].checkValidity()).to.be.false
     })
-  })
-
-  it('test add new book1', () => {
-    cy.login(email, password)
-    cy.addNew(titleBook1, description, author)
-    cy.contains(titleBook1).should('be.visible')
-  })
-
-  it('test when adding a book add to favorites', () => {
-    cy.login(email, password)
-    cy.addNewBookAndFavorites(titleBook2, description, author)
-    cy.contains(titleBook2).should('be.visible')
-  })
-
-  it.only('test add a book to favorites on the books page', () => {
-    cy.login(email, password)
-    cy.contains(titleBook1).should('be.visible')
-      .within(() => {
-        cy.contains('Add to favorite').click()
-      })
-    cy.contains('Favorites').click()  
-    cy.contains(titleBook1).should('be.visible')
-  })
-
-  it('test delete from favorite', () => {
-    cy.login(email, password)
-    cy.contains('Favorites').click()
-    cy.contains(titleBook2).should('be.visible')
-      .within(() => { 
-        cy.contains('Delete from favorite').click()
-      });
   })
 })
